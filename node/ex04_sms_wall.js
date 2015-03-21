@@ -2,24 +2,28 @@
 /* jshint node: true */
 
 /*
- * SMS text wall example for 46elks
+ * 46elks samples: Wall of text messages
  * ===
  *
- * This example shows you how you can feature recent incoming text messages.
+ * This example introduces you with how to receive text messages to a phone number allocated
+ * to you and store them. The scenario is that a web portal can be displayed on a wall to show
+ * the most recent text messages which can be great for announcements and notices or various
+ * kinds. The same idea can be expanded further to provide all kinds of logging, highlighted
+ * notices, etc.
  *
  * Setup
  * ---
  *
- * Give this example's process write access to the current directory.
- * Set the `sms_url` value for your allocated numbers to match the endpoint provided by this
- *   example along with a unique key (http://example.com/callback/newsms?key=uzh789j123).
- * Provide your own API username and API password (see the sendSms() function).
+ * Give this example's process write access to its working directory for simple data storage.
+ * Get a new random secret key and set it as the `key` variable.
+ * Set the `sms_url` value for the allocated numbers you are going to use to match the endpoint
+ *   provided by this example along with the key (http://example.com/callback/newsms?key=abc123).
  */
 
 var core = require(__dirname + '/_core.js');
 var fs = require('fs');
 
-var key = 'uzh789j123'; // This is the key that should be unique.
+var key = 'abc123'; // This is the key that should be unique.
 
 var knownPeople = { // This object is used for nicer output formatting.
   '+46704508449': 'Johannes L', // Each pair consists of a phone number and a name.
@@ -74,7 +78,7 @@ core.listen('/wall', function listener(page) {
   page.write('<!DOCTYPE html>\n<html><head><title>Text wall example for 46elks</title><style>h1,p{font-family:Verdana;text-align:center;width:90%;margin:0 auto;padding:10px 20px;}h1{font-size:22px;}p{font-size:16px;}p em{font-size:13px;}</style><meta http-equiv="refresh" content="5"></head><body><h1>SMS text wall</h1>');
 
   // Output each line to the client.
-  for (var i = 0; i < lines.length; i++) {
+  for (var i = lines.length - 1; i >= 0; i--) {
     var line = lines[i].trim();
 
     // Skip empty lines.

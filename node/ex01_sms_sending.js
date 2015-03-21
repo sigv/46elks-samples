@@ -2,11 +2,13 @@
 /* jshint node: true */
 
 /*
- * SMS sending example for 46elks
+ * 46elks samples: Sending a text message
  * ===
  *
- * This example sends off a text message to a pre-defined phone number when the specific
- * endpoint (/send) is reached.
+ * This example introduces you with how to send a text message. The scenario is that
+ * a text message is sent to a pre-defined phone number each time a specific endpoint,
+ * in this case /send, is opened by someone, but the same basic principles can be applied
+ * for all kinds of situations.
  *
  * Setup
  * ---
@@ -56,6 +58,13 @@ function sendSms(from, to, message) {
 }
 
 core.listen('/send', function listener(page) {
+
+  /*
+   * This will be executed when a request to /send is received.
+   * You are therefore required to send a request for /send from, say, your browser.
+   *
+   * The backend details have been abstracted away in these demos.
+   */
 
   var from = 'DummyFrom'; // This is the sender. It can be up to 11 alphanumeric chars long.
   var to = '+46709751949'; // This is the recipient's number. You should change it.

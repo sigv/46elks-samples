@@ -2,18 +2,21 @@
 /* jshint node: true */
 
 /*
- * Group SMS example for 46elks
+ * 46elks samples: Forwarding text messages in groups
  * ===
  *
- * This example listens to incoming text messages and, if they match a sender rule, forwards
- * them to everyone else in the group.
+ * This example blends the previous two examples - sending custom text messages and receiving
+ * text messages. Received text messages are matches against rules and appropriately forwarded
+ * to the members of the group. The scenario is that you can message a single number and the
+ * message is then delivered to everyone in that group which allows an easy group chat regardless
+ * of what devices everyone involved is using.
  *
  * Setup
  * ---
  *
- * Allocate phone numbers either via the web dashboard or using the /Numbers API endpoint.
- * Set the `sms_url` value for the allocated numbers to match the endpoint provided by this
- *   example (http://example.com/callback/newsms).
+ * Allocate phone numbers either via the web dashboard or by using the /Numbers API endpoint.
+ * For the allocated numbers you are going to use, set the `sms_url` value as the endpoint
+ *   provided by this example (http://example.com/callback/newsms).
  * Modify the group objects as described in the code, setting your allocated numbers and the
  *   numbers of all the members of the groups.
  * Provide your own API username and API password (see the sendSms() function).
@@ -125,7 +128,7 @@ core.listen('/callback/newsms', function listener(page) {
     // This is what we end up sending off:
     // from = page.post.to // This is the number we received the text on.
     // to = memberNumber // This is the number of the current member we are looking at.
-    // message = ...
+    // message = "<author>: <original message>" // This is the message being sent away. Simple.
 
     // Message ahoy!
     sendSms(page.post.to, memberNumber, author + ': ' + page.post.message);
