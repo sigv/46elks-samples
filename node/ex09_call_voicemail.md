@@ -13,13 +13,13 @@ Using the following `voice_start` configuration allows doing just that with the 
   "busy": {
     "play": "http://www.46elks.com/download/PleaseLeaveAMessageAfterTheBeep.wav",
     "next": {
-      "record": "http://example.com/newvoicemail.php"
+      "record": "http://example.com/newvoicemail"
     }
   },
   "failed": {
     "play": "http://www.46elks.com/download/PleaseLeaveAMessageAfterTheBeep.wav",
     "next": {
-      "record": "http://example.com/newvoicemail.php"
+      "record": "http://example.com/newvoicemail"
     }
   }
 }
