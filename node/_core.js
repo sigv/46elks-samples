@@ -76,9 +76,10 @@ http.createServer(function (request, response) {
 
     // ...and thank the source.
 
+    var isHtml = responseData.indexOf('<!DOCTYPE html>') !== -1;
     response.writeHead(200, {
       'Content-Length': responseData.length,
-      'Content-Type': 'text/plain; charset=utf-8'
+      'Content-Type': 'text/' + (isHtml ? 'html' : 'plain') + '; charset=utf-8'
     });
 
     if (responseData !== '') response.write(responseData);
