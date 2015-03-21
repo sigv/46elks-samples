@@ -1,4 +1,4 @@
-# 46elks samples: Playing music in voice calls
+# 46elks samples: Playing audio in voice calls
 
 An outgoing call can be initiated and set to only play a specific pre-recorded message to the remote party.
 
