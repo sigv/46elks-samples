@@ -55,13 +55,13 @@ function sendSms(from, to, message) {
 
 }
 
-core.listen('/send', function listener(postData, writeResponse) {
+core.listen('/send', function listener(page) {
 
   var from = 'DummyFrom'; // This is the sender. It can be up to 11 alphanumeric chars long.
   var to = '+46709751949'; // This is the recipient's number. You should change it.
   var message = 'Hello, world!';
 
   sendSms(from, to, message);
-  writeResponse('Your request has been acknowledged. Have a nice day.');
+  page.write('Your request has been acknowledged. Have a nice day.');
 
 });

@@ -83,34 +83,34 @@ function sendSms(from, to, message) {
 
 }
 
-core.listen('/callback/newsms.php', function listener(postData) {
+core.listen('/callback/newsms.php', function listener(page) {
 
   // Make sure the POST data looks sane before starting anything.
   var fields = [ 'from', 'to', 'message' ];
   for (var i = 0; i < fields.length; i++) {
     var field = fields[i];
-    if (typeof postData[field] === 'undefined') {
+    if (typeof page.post[field] === 'undefined') {
       console.error('No "' + field + '" key in the POST data.');
       return;
     }
   }
 
   // Group keys are our allocated numbers which makes group lookup rather simple.
-  var group = groups[postData.to];
+  var group = groups[page.post.to];
 
   // If there is no group matched, just log that and return.
   if (typeof group === 'undefined') {
-    console.error('No group for number "' + postData.to + '". (from: "' + postData.from + '")');
+    console.error('No group for number "' + page.post.to + '". (from: "' + page.post.from + '")');
     return;
   }
 
   // People's names are nicely organized as well where the keys are their representative numbers.
-  var author = group.members[postData.from];
+  var author = group.members[page.post.from];
 
   // The sender does not seem to be a member of the group he is sending for.
   if (typeof author === 'undefined') {
-    // If you want to allow this, you could use something like `author = postData.from`.
-    console.error('Broadcast for "' + postData.from + '" rejected in "' + group.name + '".');
+    // If you want to allow this, you could use something like `author = page.post.from`.
+    console.error('Broadcast for "' + page.post.from + '" rejected in "' + group.name + '".');
     return;
   }
 
@@ -120,15 +120,15 @@ core.listen('/callback/newsms.php', function listener(postData) {
     if (!group.members.hasOwnProperty(memberNumber)) continue;
 
     // The original sender is probably not interested in an echo.
-    if (memberNumber === postData.from) continue;
+    if (memberNumber === page.post.from) continue;
 
     // This is what we end up sending off:
-    // from = postData.to // This is the number we received the text on.
+    // from = page.post.to // This is the number we received the text on.
     // to = memberNumber // This is the number of the current member we are looking at.
     // message = ...
 
     // Message ahoy!
-    sendSms(postData.to, memberNumber, author + ': ' + postData.message);
+    sendSms(page.post.to, memberNumber, author + ': ' + page.post.message);
   }
 
 });

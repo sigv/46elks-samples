@@ -32,7 +32,7 @@ var hours = {
   'Sat': '10:00 - 16:00'
 };
 
-core.listen('/callback/newsms.php', function listener(postData, writeResponse) {
+core.listen('/callback/newsms.php', function listener(page) {
 
   // Hint: You can check the "message" key-value pair in POST data to build commands!
 
@@ -40,10 +40,10 @@ core.listen('/callback/newsms.php', function listener(postData, writeResponse) {
 
   if (typeof hours[day] === 'undefined') {
     // The open hours for the day are not defined. That means we are closed.
-    writeResponse('Sorry, but we are closed today.');
+    page.write('Sorry, but we are closed today.');
   } else {
     // The open hours for the day are defined. That means we are open at some point.
-    writeResponse('We are open today between ' + hours[day] + '.');
+    page.write('We are open today between ' + hours[day] + '.');
   }
 
 });

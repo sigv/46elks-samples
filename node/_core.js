@@ -68,7 +68,10 @@ http.createServer(function (request, response) {
     };
 
     for (var i = 0; i < listeners[request.url].length; i++) {
-      listeners[request.url][i](postData, writeResponse);
+      listeners[request.url][i]({
+        post: postData,
+        write: writeResponse
+      });
     }
 
     // ...and thank the source.
@@ -92,7 +95,7 @@ console.log('Server listening on port %s', port);
 var exports = module.exports = {};
 
 // And this is the core call that will matter for the examples.
-exports.listen = function listen(url, listener /* :(postData, writeResponse) */) {
+exports.listen = function listen(url, listener) {
 
   // Do a quick check that we have a URL handed to us.
   if (typeof url !== 'string') {
