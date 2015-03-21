@@ -13,7 +13,7 @@
  *
  * Allocate phone numbers either via the web dashboard or using the /Numbers API endpoint.
  * Set the `sms_url` value for the allocated numbers to match the endpoint provided by this
- *   example (http://example.com/callback/newsms.php).
+ *   example (http://example.com/callback/newsms).
  */
 
 var core = require(__dirname + '/_core.js');
@@ -32,7 +32,7 @@ var hours = {
   'Sat': '10:00 - 16:00'
 };
 
-core.listen('/callback/newsms.php', function listener(page) {
+core.listen('/callback/newsms', function listener(page) {
 
   // Hint: You can check the "message" key-value pair in POST data to build commands!
 

@@ -13,7 +13,7 @@
  *
  * Allocate phone numbers either via the web dashboard or using the /Numbers API endpoint.
  * Set the `sms_url` value for the allocated numbers to match the endpoint provided by this
- *   example (http://example.com/callback/newsms.php).
+ *   example (http://example.com/callback/newsms).
  * Modify the group objects as described in the code, setting your allocated numbers and the
  *   numbers of all the members of the groups.
  * Provide your own API username and API password (see the sendSms() function).
@@ -83,7 +83,7 @@ function sendSms(from, to, message) {
 
 }
 
-core.listen('/callback/newsms.php', function listener(page) {
+core.listen('/callback/newsms', function listener(page) {
 
   // Make sure the POST data looks sane before starting anything.
   var fields = [ 'from', 'to', 'message' ];
