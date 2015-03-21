@@ -2,11 +2,11 @@
 /* jshint node: true */
 
 /*
- * 46elks samples: Placing an outgoing call
+ * 46elks samples: Placing an outgoing voice call
  * ===
  *
- * This example introduces you with how to place an outgoing call that connects the user
- * to a pre-defined phone number right away on request. This idea can be adapted for
+ * This example introduces you with how to place an outgoing voice call that connects the
+ * user to a pre-defined phone number right away on request. This idea can be adapted for
  * various situations and expanded further, for example, including recordings of such
  * calls and voicemail systems, that allow people to leave notes.
  *
