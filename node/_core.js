@@ -35,16 +35,6 @@ http.createServer(function (request, response) {
     return;
   }
 
-  if (request.method !== 'POST') {
-    // Ignore everything that is not a POST request.
-    response.writeHead(400, {
-      'Content-Length': 0,
-      'Content-Type': 'text/plain; charset=utf-8'
-    });
-    response.end();
-    return;
-  }
-
   if (typeof listeners[request.url] === 'undefined') {
     // We don't have anything in place to handle this request so just 404 it.
     response.writeHead(404, {
