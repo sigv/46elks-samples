@@ -17,6 +17,6 @@
 
 You can visit [46elks.com](http://www.46elks.com/) for more information.
 
-If you want to get your hands on some code and documentation, clone this repository locally, hack around a bit and head over to [46elks.com/docs](http://www.46elks.com/docs) for some reading. Keep in mind you will need to sign up and get your API credentials before being able to make magic happen\*, visit [dashboard.46elks.com](https://dashboard.46elks.com/).
+If you want to get your hands on some code and documentation, clone this repository locally, hack around a bit and head over to [46elks.com/docs](http://www.46elks.com/docs) for some reading. Keep in mind you will need to sign up and get your API credentials before being able to make magic happen\*, visit [the dashboard](https://dashboard.46elks.com/).
 
 <sub>\* Magic not guaranteed to occur when using the 46elks API. The creators of the API, documentation or examples may not be held liable for damages caused due to expectations of magic.</sub>
