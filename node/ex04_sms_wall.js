@@ -75,7 +75,7 @@ core.listen('/wall', function listener(page) {
   }
 
   // Throw the beginning of the HTML at the requesting client.
-  page.write('<!DOCTYPE html>\n<html><head><title>Text wall example for 46elks</title><style>h1,p{font-family:Verdana;text-align:center;width:90%;margin:0 auto;padding:10px 20px;}h1{font-size:22px;}p{font-size:16px;}p em{font-size:13px;}</style><meta http-equiv="refresh" content="5"></head><body><h1>SMS text wall</h1>');
+  page.write('<!DOCTYPE html>\n<html><head><title>Text wall example for 46elks</title><style>h1,p{font-family:Verdana;text-align:center;width:90%;margin:0 auto;padding:10px 20px;}h1{font-size:22px;}p{font-size:16px;}p em{font-size:13px;}</style><meta http-equiv="refresh" content="5"></head><body><h1>Text wall example</h1>');
 
   // Output each line to the client.
   for (var i = lines.length - 1; i >= 0; i--) {
