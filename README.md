@@ -21,6 +21,5 @@ If you want to get your hands on some code and documentation, clone this reposit
 
 ---
 
-<sub>\* Human beings are not provided by the 46elks team. You are required to aquire your own human beings.</sub>
-
-<sub>\*\* Magic not guaranteed to occur when using the 46elks API. The creators of the API, the documentation and the examples may not be held liable for damages caused due to expectations of magic.</sub>
+<sub>\* Human beings are not provided by the 46elks team. You are required to aquire your own human beings.<br>
+\*\* Magic not guaranteed to occur when using the 46elks API. The creators of the API, the documentation and the examples may not be held liable for damages caused due to expectations of magic.</sub>
