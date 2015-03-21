@@ -21,7 +21,7 @@ http.createServer(function (request, response) {
 
   if (request.url === '/') {
     // Provide special content for the front page.
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
     response.write('You are currently running the 46elks sample server.\n' +
       'See https://github.com/sigv/46elks-samples for more information.');
     response.end();
@@ -30,14 +30,14 @@ http.createServer(function (request, response) {
 
   if (request.method !== 'POST') {
     // Ignore everything that is not a POST request.
-    response.writeHead(400, { 'Content-Type': 'text/plain' });
+    response.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
     response.end();
     return;
   }
 
   if (typeof listeners[request.url] === 'undefined') {
     // We don't have anything in place to handle this request so just 404 it.
-    response.writeHead(404, { 'Content-Type': 'text/plain' });
+    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     response.end();
     return;
   }
@@ -53,15 +53,17 @@ http.createServer(function (request, response) {
 
   // When the provider decides to call it a day...
   request.on('end', function () {
-    // ...thank it...
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end();
+    // ...tell it everything is fine...
+    response.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
 
-    // ...and fire off a call to all the listeners hooked for it.
+    // ...fire off a call to all the listeners hooked for it...
     var postData = querystring.parse(data) || {};
     for (var i = 0; i < listeners[request.url].length; i++) {
-      listeners[request.url][i](postData);
+      listeners[request.url][i](postData, response);
     }
+
+    // ...and say goodbye.
+    response.end();
   });
 
 }).listen(port);
@@ -73,7 +75,7 @@ console.log('Server listening on port %s', port);
 var exports = module.exports = {};
 
 // And this is the core call that will matter for the examples.
-exports.listen = function listen(url, listener /* :(postData) */) {
+exports.listen = function listen(url, listener /* :(postData, response) */) {
 
   // Do a quick check that we have a URL handed to us.
   if (typeof url !== 'string') {
