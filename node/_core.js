@@ -76,10 +76,12 @@ http.createServer(function (request, response) {
 
     // ...and thank the source.
 
-    var isHtml = responseData.indexOf('<!DOCTYPE html>') !== -1;
+    var isHtml = responseData.trim().substr(0, 15) === '<!DOCTYPE html>';
+    var isJson = responseData.trim().substr(0, 1) === '{';
     response.writeHead(200, {
       'Content-Length': responseData.length,
-      'Content-Type': 'text/' + (isHtml ? 'html' : 'plain') + '; charset=utf-8'
+      'Content-Type': isJson ? 'application/json' :
+        ('text/' + (isHtml ? 'html' : 'plain') + '; charset=utf-8')
     });
 
     if (responseData !== '') response.write(responseData);
