@@ -34,7 +34,7 @@ var hours = {
 
 core.listen('/callback/newsms.php', function listener(postData, writeResponse) {
 
-  // Hint: You can check the "message" field in POST data to build commands!
+  // Hint: You can check the "message" key-value pair in POST data to build commands!
 
   var day = dayLookup[new Date().getDay()];
 

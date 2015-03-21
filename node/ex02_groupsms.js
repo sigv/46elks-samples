@@ -90,7 +90,7 @@ core.listen('/callback/newsms.php', function listener(postData) {
   for (var i = 0; i < fields.length; i++) {
     var field = fields[i];
     if (typeof postData[field] === 'undefined') {
-      console.error('No "' + field + '" in the POST data.');
+      console.error('No "' + field + '" key in the POST data.');
       return;
     }
   }
