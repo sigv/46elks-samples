@@ -10,13 +10,17 @@
 - [x] Receive SMS messages
 - [x] Handle incoming phone calls
 - [x] Build IVRs
-- [x] Connect phone calls to real human beings
+- [x] Connect phone calls to real human beings\*
 - [x] Automate outgoing phone call creation
 
 ## Where do I find out more?
 
 You can visit [46elks.com](http://www.46elks.com/) for more information.
 
-If you want to get your hands on some code and documentation, clone this repository locally, hack around a bit and head over to [46elks.com/docs](http://www.46elks.com/docs) for some reading. Keep in mind you will need to sign up and get your API credentials before being able to make magic happen\*, visit [the dashboard](https://dashboard.46elks.com/).
+If you want to get your hands on some code and documentation, clone this repository locally, hack around a bit and head over to [46elks.com/docs](http://www.46elks.com/docs) for some reading. Keep in mind you will need to sign up and get your API credentials before being able to make magic happen\*\*, visit [the dashboard](https://dashboard.46elks.com/).
 
-<sub>\* Magic not guaranteed to occur when using the 46elks API. The creators of the API, the documentation and the examples may not be held liable for damages caused due to expectations of magic.</sub>
+---
+
+<sub>\* Human beings are not provided by the 46elks team. You are required to aquire your own human beings.</sub>
+
+<sub>\*\* Magic not guaranteed to occur when using the 46elks API. The creators of the API, the documentation and the examples may not be held liable for damages caused due to expectations of magic.</sub>
