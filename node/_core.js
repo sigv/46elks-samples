@@ -21,23 +21,36 @@ http.createServer(function (request, response) {
 
   if (request.url === '/') {
     // Provide special content for the front page.
-    response.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-    response.write('You are currently running the 46elks sample server.\n' +
-      'See https://github.com/sigv/46elks-samples for more information.');
+    var responseData = 'You are currently running the 46elks sample server.\n' +
+      'See https://github.com/sigv/46elks-samples for more information.';
+
+    response.writeHead(200, {
+      'Content-Length': responseData.length,
+      'Content-Type': 'text/plain; charset=utf-8'
+    });
+
+    response.write(responseData);
     response.end();
+
     return;
   }
 
   if (request.method !== 'POST') {
     // Ignore everything that is not a POST request.
-    response.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+    response.writeHead(400, {
+      'Content-Length': 0,
+      'Content-Type': 'text/plain; charset=utf-8'
+    });
     response.end();
     return;
   }
 
   if (typeof listeners[request.url] === 'undefined') {
     // We don't have anything in place to handle this request so just 404 it.
-    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    response.writeHead(404, {
+      'Content-Length': 0,
+      'Content-Type': 'text/plain; charset=utf-8'
+    });
     response.end();
     return;
   }
@@ -53,17 +66,31 @@ http.createServer(function (request, response) {
 
   // When the provider decides to call it a day...
   request.on('end', function () {
-    // ...tell it everything is fine...
-    response.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
 
-    // ...fire off a call to all the listeners hooked for it...
+    // ...fire off calls to all the listeners hooked for it...
+
     var postData = querystring.parse(data) || {};
+    var responseData = '';
+
+    var writeResponse = function writeResponse(chunk) {
+      if (typeof chunk === 'undefined') return;
+      responseData += chunk.toString();
+    };
+
     for (var i = 0; i < listeners[request.url].length; i++) {
-      listeners[request.url][i](postData, response);
+      listeners[request.url][i](postData, writeResponse);
     }
 
-    // ...and say goodbye.
+    // ...and thank the source.
+
+    response.writeHead(200, {
+      'Content-Length': responseData.length,
+      'Content-Type': 'text/plain; charset=utf-8'
+    });
+
+    if (responseData !== '') response.write(responseData);
     response.end();
+
   });
 
 }).listen(port);
@@ -75,7 +102,7 @@ console.log('Server listening on port %s', port);
 var exports = module.exports = {};
 
 // And this is the core call that will matter for the examples.
-exports.listen = function listen(url, listener /* :(postData, response) */) {
+exports.listen = function listen(url, listener /* :(postData, writeResponse) */) {
 
   // Do a quick check that we have a URL handed to us.
   if (typeof url !== 'string') {
