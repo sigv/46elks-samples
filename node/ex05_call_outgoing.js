@@ -10,6 +10,11 @@
  * various situations and expanded further, for example, including recordings of such
  * calls and voicemail systems, that allow people to leave notes.
  *
+ * You can investigate the JSON examples provided in later examples in this samples
+ * repository to learn about how the `voice_start` value can be used to execute various
+ * actions. To easily test those configurations out in action, replace the `voice_start`
+ * value in the listener() function of this example.
+ *
  * Setup
  * ---
  *
@@ -60,8 +65,8 @@ function newCall(from, to, voice_start) {
 core.listen('/call', function listener(page) {
 
   var from = '+46766861001'; // This is the caller. You should put a number allocated to you here.
-  var to = page.post.mobilenumber;
-  var voice_start = '{ "connect": "+461890510" }';
+  var to = page.post.mobilenumber; // This is the number to be called. Simple.
+  var voice_start = '{ "connect": "+461890510" }'; // This is what instructs the 46elks system.
 
   // Start writing the page.
   page.write('<!DOCTYPE html>\n<html><head><title>Caller example for 46elks</title><style>h1,p,form{font-family:Verdana;text-align:center;width:90%;margin:0 auto;padding:10px 20px;}h1{font-size:22px;}p,form{font-size:16px;}p em{font-size:13px;}</style></head><body><h1>Caller example</h1>');
