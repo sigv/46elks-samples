@@ -83,7 +83,7 @@ function sendSms(from, to, message) {
 
 }
 
-var listening = core('/callback/newsms.php', function listener(postData) {
+core.listen('/callback/newsms.php', function listener(postData) {
 
   // Make sure the POST data looks sane before starting anything.
   var fields = [ 'from', 'to', 'message' ];
@@ -132,7 +132,3 @@ var listening = core('/callback/newsms.php', function listener(postData) {
   }
 
 });
-
-if (!listening) {
-  process.exit(1);
-}

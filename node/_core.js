@@ -69,26 +69,30 @@ http.createServer(function (request, response) {
 // Let the user know we have a server up.
 console.log('Server listening on port %s', port);
 
-// Requiring this library provides a nice function to run. Handy, isn't it!
-var exports = module.exports = function example(url, listener /* :(postData) */) {
+// This is what you get when you require this library.
+var exports = module.exports = {};
+
+// And this is the core call that will matter for the examples.
+exports.listen = function listen(url, listener /* :(postData) */) {
 
   // Do a quick check that we have a URL handed to us.
   if (typeof url !== 'string') {
     console.error('Listeners are required to provide URL strings. This one is missing it.');
-    return false;
+    process.exit(1);
+    return;
   }
 
   // Do a quick check that we have a listener handed to us.
   if (typeof listener !== 'function') {
     console.error('Listeners are required to provide listener functions. This one is missing it.');
-    return false;
+    process.exit(1);
+    return;
   }
 
   // Hook the listener.
   if (typeof listeners[url] === 'undefined') listeners[url] = [];
   listeners[url][listeners[url].length] = listener;
   console.log('Listener for ' + url + ' ready');
-  return true;
 
 };
 
