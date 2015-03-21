@@ -1,8 +1,0 @@
-{
-  "__description": "'Whisper' is the common term for playing a message before transferring a call to the actual destination. Using the following `voice_start` configuration allows doing just that with 46elks.",
-
-  "play": "http://example.com/whisper.wav",
-  "next": {
-    "connect": "+461890510"
-  }
-}
