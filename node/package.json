@@ -1,0 +1,33 @@
+{
+  "name": "samples",
+  "version": "0.1.0",
+  "description": "Sample code for the 46elks cloud communications platform",
+  "keywords": [
+    "sms",
+    "mms",
+    "ivr"
+  ],
+  "homepage": "http://www.46elks.com/",
+  "bugs": {
+    "url": "https://github.com/sigv/46elks-samples/issues"
+  },
+  "license": "Unlicense",
+  "author": "Johannes Lundberg",
+  "contributors": [
+    "Valter Strods <valters.strods@gmail.com>"
+  ],
+  "main": "./example_core.js",
+  "bin": {
+    "example2_groupsms": "./example2_groupsms.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sigv/46elks-samples"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "private": true
+}
