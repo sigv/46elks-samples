@@ -16,10 +16,7 @@
   "contributors": [
     "Valter Strods <valters.strods@gmail.com>"
   ],
-  "main": "./example_core.js",
-  "bin": {
-    "example2_groupsms": "./example2_groupsms.js"
-  },
+  "main": "./_core.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/sigv/46elks-samples"
